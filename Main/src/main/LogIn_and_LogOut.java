@@ -93,9 +93,9 @@ public class LogIn_and_LogOut extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("PAssword");
 
-        btnlogin.setBackground(new java.awt.Color(0, 51, 153));
+        btnlogin.setBackground(new java.awt.Color(255, 0, 0));
         btnlogin.setFont(new java.awt.Font("Engravers MT", 1, 18)); // NOI18N
-        btnlogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnlogin.setForeground(new java.awt.Color(255, 204, 51));
         btnlogin.setText("Login");
 
         ckbox.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,7 +106,7 @@ public class LogIn_and_LogOut extends javax.swing.JFrame {
             }
         });
 
-        btnregister.setBackground(new java.awt.Color(0, 0, 204));
+        btnregister.setBackground(new java.awt.Color(0, 0, 0,80));
         btnregister.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
         btnregister.setForeground(new java.awt.Color(255, 255, 255));
         btnregister.setText("Don't have an account? Register here");
