@@ -52,9 +52,11 @@ public class Register extends javax.swing.JFrame {
         jLabel2.setText("REGISTER");
 
         jLabel4.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Username");
 
         jLabel6.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("PAssword");
 
         ckbox2.setText("Show Password");
@@ -155,8 +157,8 @@ public class Register extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         reg = new Register();
-        reg.setVisible(true);
+        Login log = new Login();
+        log.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
