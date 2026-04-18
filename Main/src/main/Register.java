@@ -34,7 +34,7 @@ public class Register extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         password2 = new javax.swing.JPasswordField();
         ckbox2 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        btnregister = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -66,10 +66,10 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 0, 0));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 204, 51));
-        jButton1.setText("Register");
+        btnregister.setBackground(new java.awt.Color(255, 0, 0));
+        btnregister.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnregister.setForeground(new java.awt.Color(255, 204, 51));
+        btnregister.setText("Register");
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0,80));
         jButton2.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
@@ -107,7 +107,7 @@ public class Register extends javax.swing.JFrame {
                                 .addComponent(password2))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(87, 87, 87)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnregister, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jButton2)))
@@ -132,7 +132,7 @@ public class Register extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ckbox2)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnregister, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(24, 24, 24))
@@ -198,8 +198,8 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnregister;
     private javax.swing.JCheckBox ckbox2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

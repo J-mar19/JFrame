@@ -4,6 +4,8 @@
  */
 package main;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
@@ -32,8 +34,8 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
-        password = new javax.swing.JPasswordField();
+        txtusername = new javax.swing.JTextField();
+        txtpassword = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         btnlogin = new javax.swing.JButton();
         ckbox = new javax.swing.JCheckBox();
@@ -83,9 +85,9 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Username");
 
-        username.addActionListener(new java.awt.event.ActionListener() {
+        txtusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameActionPerformed(evt);
+                txtusernameActionPerformed(evt);
             }
         });
 
@@ -97,6 +99,11 @@ public class Login extends javax.swing.JFrame {
         btnlogin.setFont(new java.awt.Font("Engravers MT", 1, 18)); // NOI18N
         btnlogin.setForeground(new java.awt.Color(255, 204, 51));
         btnlogin.setText("Login");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnloginActionPerformed(evt);
+            }
+        });
 
         ckbox.setForeground(new java.awt.Color(255, 255, 255));
         ckbox.setText("Show Password");
@@ -133,8 +140,8 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ckbox)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(93, 93, 93)
                         .addComponent(btnlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -160,11 +167,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ckbox)
                 .addGap(18, 18, 18)
@@ -183,16 +190,16 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+    private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameActionPerformed
+    }//GEN-LAST:event_txtusernameActionPerformed
 
     private void ckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckboxActionPerformed
         // TODO add your handling code here:
         if(ckbox.isSelected()){
-            password.setEchoChar((char)0);
+            txtpassword.setEchoChar((char)0);
         }else{
-            password.setEchoChar('*');
+            txtpassword.setEchoChar('*');
         }
     }//GEN-LAST:event_ckboxActionPerformed
 
@@ -207,6 +214,15 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_ExitActionPerformed
+
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+        // TODO add your handling code here:
+        String username = txtusername.getText();
+        String password = txtpassword.getPassword().toString();
+        if(username.isEmpty() || password.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Username / Password should not empty.", "Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,7 +272,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField password;
-    private javax.swing.JTextField username;
+    private javax.swing.JPasswordField txtpassword;
+    private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
 }
