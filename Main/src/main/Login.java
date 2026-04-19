@@ -4,6 +4,9 @@
  */
 package main;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -167,11 +170,37 @@ public class Login extends javax.swing.JFrame {
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
-        String username = txtusername.getText();
-        String password = txtpassword.getPassword().toString();
-        if(username.isEmpty() || password.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Username / Password should not empty.", "Error",JOptionPane.ERROR_MESSAGE);
+    String username = txtusername.getText();
+    String password = new String(txtpassword.getPassword());
+
+    if(username.isEmpty() || password.isEmpty()){
+        JOptionPane.showMessageDialog(this, "Username / Password should not be empty.");
+        return;
+    }
+
+    try {
+        Connection con = DBConnection.getConnection();
+
+        String sql = "SELECT * FROM users WHERE username=? AND password=?";
+        PreparedStatement pst = con.prepareStatement(sql);
+
+        pst.setString(1, username);
+        pst.setString(2, password);
+
+        ResultSet rs = pst.executeQuery();
+
+        if(rs.next()){
+            JOptionPane.showMessageDialog(this, "Login Successful!");
+            
+            this.dispose();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid Username or Password");
         }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, e);
+    }
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void ckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckboxActionPerformed

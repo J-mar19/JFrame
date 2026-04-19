@@ -4,6 +4,8 @@
  */
 package main;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
 /**
@@ -172,10 +174,33 @@ public class Register extends javax.swing.JFrame {
     private void btnregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregisterActionPerformed
         // TODO add your handling code here:
         String username = username2.getText();
-        String password = password2.getPassword().toString();
-        if(username.isEmpty() || password.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Username / Password should not empty.", "Error",JOptionPane.ERROR_MESSAGE);
-        }
+    String password = new String(password2.getPassword());
+
+    if(username.isEmpty() || password.isEmpty()){
+        JOptionPane.showMessageDialog(this, "Username / Password should not be empty.");
+        return;
+    }
+
+    try {
+        Connection con = DBConnection.getConnection();
+
+        String sql = "INSERT INTO users(username, password) VALUES (?, ?)";
+        PreparedStatement pst = con.prepareStatement(sql);
+
+        pst.setString(1, username);
+        pst.setString(2, password);
+
+        pst.executeUpdate();
+
+        JOptionPane.showMessageDialog(this, "Registered Successfully!");
+
+        
+        new Login().setVisible(true);
+        this.dispose();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, e);
+    }
     }//GEN-LAST:event_btnregisterActionPerformed
 
     /**
