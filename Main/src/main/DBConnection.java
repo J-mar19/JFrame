@@ -16,13 +16,13 @@ public class DBConnection {
         Connection conn = null;
         
         try {
+            Class.forName("com.mysql.jbdc.Driver");
+            
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Datebase Connected Successfully!");
-        } catch (SQLException e) {
-            System.out.println("connection failed!");
-            e.printStackTrace();
+            return conn;
+        } catch (Exception ex) {
+            System.out.println("There were errors while connecting to db!");
+            return null;
         }
-        
-        return conn;
     }
 }

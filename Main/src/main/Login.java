@@ -15,8 +15,14 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form LogIn_and_LogOut
      */
+    
+    DBConnection conn;
     public Login() {
         initComponents();
+        conn = new DBConnection();
+        if(conn == null){
+            JOptionPane.showMessageDialog(this, "DB Connection not available.", "Error",JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
