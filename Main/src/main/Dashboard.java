@@ -53,16 +53,20 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0,130));
 
         jLabel2.setFont(new java.awt.Font("Engravers MT", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("academic ninja student record");
 
         jLabel3.setFont(new java.awt.Font("Ink Free", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("FirstName");
 
         jLabel4.setFont(new java.awt.Font("Ink Free", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("LastName");
 
         jLabel5.setFont(new java.awt.Font("Ink Free", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("MiddleName");
 
         tlastname.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +76,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Ink Free", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Ninja Rank");
 
         btnAdd.setBackground(new java.awt.Color(102, 204, 0));
@@ -114,6 +119,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        studentNinja.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         studentNinja.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         studentNinja.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,6 +129,15 @@ public class Dashboard extends javax.swing.JFrame {
                 "FirstName", "MiddleName", "LastName", "Ninja Rank"
             }
         ));
+        studentNinja.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                studentNinjaAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane1.setViewportView(studentNinja);
 
         btnninjarank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Genin (low-level)", "Chunin (mid-level/leader)", "Jonin (elite)", "Special Jonin (S-level)", " Kage (village leader)" }));
@@ -256,6 +271,11 @@ public class Dashboard extends javax.swing.JFrame {
             model.removeRow(row);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void studentNinjaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentNinjaAncestorAdded
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_studentNinjaAncestorAdded
 
     /**
      * @param args the command line arguments
