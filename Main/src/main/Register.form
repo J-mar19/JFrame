@@ -113,7 +113,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Admin\Downloads\desktop-wallpaper-naruto-logos-naruto-village-symbol-removebg-preview.png"/>
+              <Image iconType="3" name="/main/Naruto-Icon-forRegister.png"/>
             </Property>
           </Properties>
         </Component>
@@ -202,7 +202,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Admin\Downloads\naruto-background2_register.jpg"/>
+          <Image iconType="3" name="/main/naruto-background2_register.jpg"/>
         </Property>
       </Properties>
       <Constraints>

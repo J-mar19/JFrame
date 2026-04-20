@@ -48,7 +48,7 @@ public class Register extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0,80));
         jPanel1.setToolTipText("R");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\desktop-wallpaper-naruto-logos-naruto-village-symbol-removebg-preview.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/Naruto-Icon-forRegister.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Engravers MT", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,7 +149,7 @@ public class Register extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 330, 450));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\naruto-background2_register.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/naruto-background2_register.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 490));
 
         pack();
