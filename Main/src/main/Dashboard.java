@@ -45,6 +45,7 @@ public class Dashboard extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         studentNinja = new javax.swing.JTable();
         btnninjarank = new javax.swing.JComboBox<>();
+        btnUpdate = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,9 +139,24 @@ public class Dashboard extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        studentNinja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                studentNinjaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(studentNinja);
 
         btnninjarank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Genin (low-level)", "Chunin (mid-level/leader)", "Jonin (elite)", "Special Jonin (S-level)", " Kage (village leader)" }));
+
+        btnUpdate.setBackground(new java.awt.Color(102, 204, 0));
+        btnUpdate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,7 +184,10 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(btnninjarank, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -203,11 +222,13 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnDelete)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDelete)
+                            .addComponent(btnUpdate))
                         .addGap(5, 5, 5)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -233,7 +254,9 @@ public class Dashboard extends javax.swing.JFrame {
         String ninjarank = btnninjarank.getSelectedItem().toString();
         
         if(firstname.isEmpty() || middlename.isEmpty() || lastname.isEmpty() || ninjarank.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter your fields", "Try again", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, 
+                    "Please enter your fields", 
+                    "Try again", JOptionPane.ERROR_MESSAGE);
         } else {
             DefaultTableModel model = (DefaultTableModel) studentNinja.getModel();
             model.addRow(new Object[]{firstname,middlename,lastname,ninjarank});
@@ -278,6 +301,45 @@ public class Dashboard extends javax.swing.JFrame {
         
     }//GEN-LAST:event_studentNinjaAncestorAdded
 
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) studentNinja.getModel();
+        int i = studentNinja.getSelectedRow();
+        try {
+        if (i >= 0) {
+
+            model.setValueAt(tfirstname.getText(), i, 0);
+            model.setValueAt(tmiddlename.getText(), i, 1);
+            model.setValueAt(tlastname.getText(), i, 2);
+            model.setValueAt(btnninjarank.getSelectedItem().toString(), i, 3);
+
+            JOptionPane.showMessageDialog(this, "Updated successfully!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Select a row first!");
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void studentNinjaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentNinjaMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) studentNinja.getModel();
+        int i = studentNinja.getSelectedRow();
+        try {
+        tfirstname.setText(model.getValueAt(i, 0).toString());
+        tmiddlename.setText(model.getValueAt(i, 1).toString());
+        tlastname.setText(model.getValueAt(i, 2).toString());
+
+        String rank = model.getValueAt(i, 3).toString();
+        btnninjarank.setSelectedItem(rank);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error loading row data");
+    }
+    }//GEN-LAST:event_studentNinjaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -318,6 +380,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> btnninjarank;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
