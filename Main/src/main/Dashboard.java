@@ -249,23 +249,50 @@ public class Dashboard extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         String firstname = tfirstname.getText();
-        String middlename = tmiddlename.getText();
-        String lastname = tlastname.getText();
-        String ninjarank = btnninjarank.getSelectedItem().toString();
-        
-        if(firstname.isEmpty() || middlename.isEmpty() || lastname.isEmpty() || ninjarank.isEmpty()) {
-            JOptionPane.showMessageDialog(this, 
-                    "Please enter your fields", 
-                    "Try again", JOptionPane.ERROR_MESSAGE);
-        } else {
-            DefaultTableModel model = (DefaultTableModel) studentNinja.getModel();
-            model.addRow(new Object[]{firstname,middlename,lastname,ninjarank});
-            
-            tfirstname.setText("");
-            tmiddlename.setText("");
-            tlastname.setText("");
-            btnninjarank.getSelectedItem().toString();
-        }
+    String middlename = tmiddlename.getText();
+    String lastname = tlastname.getText();
+    String ninjarank = btnninjarank.getSelectedItem().toString();
+
+    if(firstname.isEmpty() || middlename.isEmpty() || lastname.isEmpty()) {
+        JOptionPane.showMessageDialog(this,
+                "Please fill all fields",
+                "Try again",
+                JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    try {
+        String url = "jdbc:mysql://localhost:3306/demo";
+            java.sql.Connection conn = java.sql.DriverManager.getConnection(url, "root", "");
+
+        String sql = "INSERT INTO student (firstname, middlename, lastname, ninjarank) VALUES (?, ?, ?, ?)";
+        java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+
+        pst.setString(1, firstname);
+        pst.setString(2, middlename);
+        pst.setString(3, lastname);
+        pst.setString(4, ninjarank);
+
+        pst.executeUpdate();
+
+        DefaultTableModel model = (DefaultTableModel) studentNinja.getModel();
+        model.addRow(new Object[]{firstname, middlename, lastname, ninjarank});
+
+        JOptionPane.showMessageDialog(this, "Student added successfully!");
+
+        tfirstname.setText("");
+        tmiddlename.setText("");
+        tlastname.setText("");
+        btnninjarank.setSelectedIndex(0);
+
+        conn.close();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this,
+                "Database Error: " + e.getMessage(),
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+    }
         
     }//GEN-LAST:event_btnAddActionPerformed
 
